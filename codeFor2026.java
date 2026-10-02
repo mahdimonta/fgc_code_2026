@@ -85,8 +85,6 @@ public class MotorOpMode extends OpMode {
         left.setPower(joyRY);
         right.setPower(joyRY);
         
-        left.setPower(-joyRX);
-        right.setPower(joyRX);
         
         left.setPower(-joyLX);
         right.setPower(joyLX);
@@ -150,7 +148,9 @@ public class MotorOpMode extends OpMode {
         rightP = rightServo.getPosition();
         
         if (gamepad2.a && !lastRampstatus ){
-            rampStatus = !rampStatus;
+            if(lastShooterOn && shooterOn){
+                rampStatus = !rampStatus;
+            }
         }
         lastRampstatus = gamepad2.a;
         if(rampStatus){
